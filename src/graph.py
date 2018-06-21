@@ -35,13 +35,14 @@ class Graph:
         #  "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
         queue = []
         found = []
-        
-        queue.append(start)
+
         found.append(start)
+        queue.append(start)
+        
 
         start.color = random_color
 
-        while len(queue) > 0:
+        while (len(queue) > 0):
             v = queue[0]
             for edge in v.edges:
                 if edge.destination not in found:

@@ -8,7 +8,7 @@ from bokeh.palettes import Spectral8
 from graph import * 
 
 WIDTH = 500
-# HEIGHT 500 #TODO currently graph renders sq Possible fix by Ajmal in stackoverflow
+HEIGHT = 500 #TODO currently graph renders sq Possible fix by Ajmal in stackoverflow
 CIRCLE_SIZE = 30
 
 graph_data = Graph()
@@ -23,7 +23,7 @@ color_list = [] #random colors
 for vertex in graph_data.vertexes:
     color_list.append(vertex.color)
 
-plot = figure(title='Graph Layout Demonstration', x_range=(0, WIDTH), y_range=(0, 500),
+plot = figure(title='Graph Layout Demonstration', x_range=(0, WIDTH), y_range=(0, HEIGHT),
               tools='', toolbar_location=None)
 
 graph = GraphRenderer()
@@ -43,10 +43,10 @@ for start_index, vertex in enumerate(graph_data.vertexes):
         end_indexes.append(graph_data.vertexes.index(e.destination))
 
 graph.edge_renderer.data_source.data = dict(
-    start=start_indexes # this is a list of some kind that has to do with starting points
-    end= end_indexes # this is a list of some kind that has to do with ending points
-)
- print(graph.edge_renderer.data_source.data)   
+    start=start_indexes, # this is a list of some kind that has to do with starting points
+    end=end_indexes) # this is a list of some kind that has to do with ending points
+
+print(graph.edge_renderer.data_source.data)   
 ### start of layout code
 # looks like it sets positions of vertexes
 
@@ -65,7 +65,7 @@ plot.renderers.append(graph)
 # List of labels
 value =[v.value for v in graph_data.vertexes] #TODO possible optimization we run through loop 3 times
 
-label_source = ColumnDataSource(data=dict(x=x, y=y, value))
+label_source = ColumnDataSource(data=dict(x=x, y=y, v=value))
 
 
 labels = LabelSet(x='x', y='y', text='v', level='glyph',
