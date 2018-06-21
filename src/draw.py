@@ -2,7 +2,7 @@ import math
 
 from bokeh.io import show, output_file
 from bokeh.plotting import figure
-from bokeh.models import GraphRenderer, StaticLayoutProvider, Oval
+from bokeh.models import GraphRenderer, StaticLayoutProvider, Circle, ColumnDataSource, Range1d, LabelSet, Label
 from bokeh.palettes import Spectral8
 
 from graph import * 
@@ -30,7 +30,7 @@ graph = GraphRenderer()
 
 graph.node_renderer.data_source.add(node_indices, 'index')
 graph.node_renderer.data_source.add(color_list, 'color')
-graph.node_renderer.glyph = circle(size=CIRCLE_SIZE, fill_color='color') # makes ovals
+graph.node_renderer.glyph = Circle(size=CIRCLE_SIZE, fill_color='color') # makes ovals
 
 
 #TODO this is drawing the edges from start to end

@@ -31,8 +31,8 @@ class Graph:
         self.vertexes.extend([debug_vertex_1, debug_vertex_2])
 
     def bfs(self, start):
-        random_color = [random.randint(0, 255)random.randint(0, 255)random.randint(0, 255)]
-        #  "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
+        random_color = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
+        "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
         queue = []
         found = []
 
